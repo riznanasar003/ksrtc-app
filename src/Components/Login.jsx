@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import NavBar from './NavBar'
 
 const Login = () => {
@@ -21,7 +21,9 @@ const Login = () => {
             (response)=>{
                 console.log(data)
                 if (response.data.status=="success") {
-                    alert("Successfully LoggedIn")
+                    sessionStorage.setItem("token",response.data.token)
+                    sessionStorage.setItem("userid",response.data.userid)
+                    navigate("/add")
                     
                 } else {
                     alert("Error")
@@ -30,9 +32,10 @@ const Login = () => {
             }
         ).catch().finally()
     }
+    let navigate = useNavigate()
   return (
     <div>
-        <NavBar/>
+        
         <div className="container">
             <div className="row">
                 <center>

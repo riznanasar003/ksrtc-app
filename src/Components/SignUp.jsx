@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import NavBar from './NavBar'
 
 const SignUp = () => {
@@ -21,12 +21,17 @@ const SignUp = () => {
     }
 
     const readValue = () =>{
+        if(data.pass==data.conpass){
+            alert("Password and confirm password same")
+        
         console.log(data)
         axios.post("http://localhost:8080/signup",data).then(
             (response)=>{
                 console.log(data)
                 if (response.data.status=="success") {
-                    alert("Add Successfully")
+                    sessionStorage.setItem("token",response.data.token)
+                    sessionStorage.setItem("userid",response.data.userid)
+                    navigate("/add")
                     
                 } else {
                     alert("Error")
@@ -35,7 +40,12 @@ const SignUp = () => {
             }
         ).catch().finally()
     }
-    <NavBar/>
+    else{
+        alert("error in password")
+    }
+}
+    
+    let navigate = useNavigate()
   return (
     <div>
 
