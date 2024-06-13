@@ -4,15 +4,22 @@ import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import AddBus from './Components/AddBus';
 import SearchBus from './Components/SearchBus';
+import ViewAll from './Components/ViewAll';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-      <Login/>
-      <SignUp/>
-      <AddBus/>
-      <SearchBus/>
-    </div>
+   <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Login/>}/>
+      <Route path="/signup" element={<SignUp/>}/>
+      <Route path="/add" element={<AddBus/>}/>
+      <Route path="/search" element={<SearchBus/>}/>
+      <Route path="/view" element={<ViewAll/>}/>
+      
+    </Routes>
+      
+   </BrowserRouter>
   );
 }
 
