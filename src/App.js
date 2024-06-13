@@ -16,7 +16,8 @@ function App() {
       <Route path="/add" element={<AddBus/>}/>
       <Route path="/search" element={<SearchBus/>}/>
       <Route path="/view" element={<ViewAll/>}/>
-      
+      <Route path="/view" element={<ViewAll/>}/>
+  
     </Routes>
       
    </BrowserRouter>
